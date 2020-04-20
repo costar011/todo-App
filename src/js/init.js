@@ -14,11 +14,38 @@ function startRandom() {
   bodyTag.style.backgroundSize = "cover";
 }
 
+function getCurrentTime() {
+  const date = new Date();
+
+  const yy = date.getFullYear();
+  const mm = date.getMonth() + 1;
+  const dd = date.getDate();
+
+  const currentDate = yy + "년" + mm + "월" + dd + "일";
+
+  const hour = date.getHours();
+  const min = date.getMinutes();
+  const sec = date.getSeconds();
+
+  const currentTime = hour + ":" + min + ":" + sec;
+
+  const html_date = document.getElementById("date-js");
+  const html_time = document.getElementById("time-js");
+
+  html_date.innerText = currentDate;
+  html_time.innerText = currentTime;
+}
+
 function init() {
   console.log("init start");
 
   // 다른 함수 실행();
   startRandom();
+  getCurrentTime();
+
+  // () <- 생성자, 호출자, 콜러, 콜스텍
+  // 하는역할 : 즉시 실행버튼
+  setInterval(getCurrentTime, 1000);
 }
 
 init();
